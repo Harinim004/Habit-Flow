@@ -4,7 +4,7 @@ HabitFlow is a beautiful, premium habit tracking application built with React, V
 
 ---
 
-## 🚀 How to Run the Project Locally
+## How to Run the Project Locally
 
 Follow these steps to set up and launch the development environment:
 
@@ -42,7 +42,7 @@ Make sure you have [Node.js](https://nodejs.org/) (v18+) installed.
 
 ---
 
-## 🛠️ Key Decisions & Architecture
+## Key Decisions & Architecture
 
 ### 1. Structure
 The project is built on the **Vite + React** framework with a routing setup using **TanStack Router**:
@@ -74,7 +74,7 @@ export interface Habit {
 ---
 
 
-## 🧠 Hardest Problem & Solution
+## Hardest Problem & Solution
 
 One of the biggest challenges I faced during this project was not a single feature, but rather learning and applying Next.js effectively while building a complete application from scratch.
 
@@ -90,7 +90,7 @@ This project became both a development challenge and a learning experience, sign
 
 
 
-## 🤖 AI Integration & Collaboration Notes
+## AI Integration & Collaboration Notes
 
 AI was used extensively throughout the development process as both a learning resource and a development assistant.
 
@@ -104,18 +104,55 @@ I also used AI as a learning tool to better understand concepts that were new to
 
 Overall, AI played an important supporting role in the project, while the planning, decision-making, customization, testing, and final integration remained my responsibility.
 
-## ⏳ Known Limitations & Future Roadmap
+
+
+## Known Limitations & Future Roadmap
 
 ### Known Limitations
-- **Responsive Layout Stacking**: Because the desktop layout has 3 side-by-side columns (Labels ➔ Mockup ➔ Labels), the SVG pointer curves connect them horizontally. On tablet and mobile viewports, the grid stacks vertically, making horizontal arrows visually disjointed. The design handles this by hiding the SVG overlay on mobile (`lg:hidden`) and relying on active borders directly on the card outlines.
-- **Local Storage Reliance**: The habit database is currently saved in local storage. Cleared browsing data will reset habits and history.
 
-### Future Roadmap
-- **Database Synchronization**: Integrate a backend database (e.g., Supabase or SQLite) to sync habit logs persistently across multiple devices.
-- **Dynamic SVG Drawing**: Implement a window listener hook that dynamically re-calculates the SVG curve endpoints based on live client bounding rectangles (`getBoundingClientRect`) instead of statically mapped coordinate assumptions.
+#### Local Storage Persistence
+Currently, all habit data, completion history, and streak information are stored in the browser using localStorage. While this satisfies the frontend-only requirement of the assessment, clearing browser data or switching devices will result in data loss.
+
+#### No User Authentication
+The application does not include user accounts or authentication. As a result, habits and progress cannot be associated with a specific user or accessed across multiple devices.
+
+
+#### No Notifications or Reminders
+Users must manually open the application to track their habits. Reminder notifications and scheduled alerts are not currently supported.
 
 ---
 
-## ⭐ Stretch Goals Attempted
-- **Snappier Instant Loads**: Removed entry delay sequences on all Hero text headers and button nodes, ensuring the application landing page feels responsive and loads instantly.
-- **Clean Repository State**: Cleaned up bun config locks, Prettier configurations, and temporary files, ensuring a lean and standardized package structure.
+### Future Roadmap
+
+#### Cloud Synchronization
+Integrate a backend service such as Supabase, Firebase, or PostgreSQL to securely store habit data and enable synchronization across multiple devices.
+
+#### User Authentication
+Add account creation and login functionality to provide personalized habit tracking and secure data storage.
+
+
+#### Habit Reminders
+Implement browser notifications, email reminders, or mobile push notifications to help users maintain consistency.
+
+#### Achievement & Gamification System
+Introduce badges, milestones, achievement levels, and rewards to improve user engagement and motivation.
+
+
+#### Progressive Web App (PWA)
+Convert HabitFlow into a PWA to provide an app-like experience with offline support and installability on desktop and mobile devices.
+---
+
+## Stretch Goals Attempted
+
+### Light / Dark Mode
+Implemented a complete theme-switching system with automatic system preference detection and local storage persistence.
+
+### Import / Export Data as JSON
+Users can export their habit data as JSON backups, import previous backups, and reset data through the Settings page.
+
+### Animations & Micro-interactions
+Added Framer Motion animations, scroll-driven effects, interactive transitions, and polished UI feedback across the landing page and dashboard.
+
+### Stats & Insights
+Implemented completion-rate analytics, streak tracking, trend visualizations, and a GitHub-style consistency heatmap to help users monitor their progress.
+
