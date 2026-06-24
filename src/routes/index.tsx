@@ -252,17 +252,6 @@ function Hero() {
           transition={{ duration: 0.3 }}
           className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs text-foreground/70"
         >
-          <div className="flex -space-x-2">
-            {[0, 1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="h-7 w-7 rounded-full border-2 border-white bg-gradient-accent shadow"
-                style={{
-                  background: `linear-gradient(135deg, hsl(${i * 60} 80% 70%), hsl(${i * 60 + 40} 80% 60%))`,
-                }}
-              />
-            ))}
-          </div>
           <div className="flex items-center gap-1">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
@@ -395,56 +384,30 @@ const features = [
 ];
 
 function Features() {
-  const [active, setActive] = useState(2);
   return (
     <section id="features" className="relative px-5 py-24">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-6xl">
         <SectionHeader
           eyebrow="Features"
           title="Everything you need to win the day."
           subtitle="A toolkit designed for consistency. Built for humans who want to grow."
         />
 
-        {/* Carousel */}
         <div className="relative mt-14">
           <div className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {features.map((f, i) => {
-              const isActive = i === active;
-              return (
-                <motion.button
-                  key={f.title}
-                  onClick={() => setActive(i)}
-                  className={`group snap-center rounded-[2rem] p-7 text-left transition-all duration-500 ${
-                    isActive
-                      ? "glass-strong scale-100 shadow-xl shadow-primary/30"
-                      : "glass scale-90 opacity-70 hover:opacity-100"
-                  }`}
-                  style={{ minWidth: "min(320px, 80vw)", maxWidth: "320px" }}
-                  whileHover={{ y: -6 }}
-                >
-                  <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-primary text-3xl shadow-lg">
-                    <span aria-hidden>{f.emoji}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground">{f.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.desc}</p>
-                  <div className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary opacity-0 transition group-hover:opacity-100">
-                    Learn more <ArrowRight className="h-3.5 w-3.5" />
-                  </div>
-                </motion.button>
-              );
-            })}
-          </div>
-
-          <div className="mt-4 flex justify-center gap-2">
-            {features.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                aria-label={`Show feature ${i + 1}`}
-                className={`h-2 rounded-full transition-all ${
-                  i === active ? "w-8 bg-primary" : "w-2 bg-foreground/20"
-                }`}
-              />
+            {features.map((f) => (
+              <motion.div
+                key={f.title}
+                className="group snap-center rounded-[2rem] p-7 text-left glass-strong shadow-xl border border-border/5 hover:border-primary/20 transition-all duration-300"
+                style={{ minWidth: "min(320px, 80vw)", maxWidth: "320px" }}
+                whileHover={{ y: -6 }}
+              >
+                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-primary text-3xl shadow-lg">
+                  <span aria-hidden>{f.emoji}</span>
+                </div>
+                <h3 className="text-xl font-bold text-foreground">{f.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.desc}</p>
+              </motion.div>
             ))}
           </div>
         </div>

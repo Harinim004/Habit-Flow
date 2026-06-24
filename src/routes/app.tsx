@@ -585,7 +585,7 @@ function HabitTrackerDashboard() {
               <span className="grid h-8 w-8 place-items-center rounded-xl bg-gradient-primary">
                 <Sparkles className="h-4 w-4 text-white" />
               </span>
-              <span className="text-base tracking-tight">HabitFlow</span>
+              <span className="text-sm sm:text-base tracking-tight">HabitFlow</span>
             </div>
           </div>
 
@@ -593,9 +593,9 @@ function HabitTrackerDashboard() {
             <ThemeToggle />
             <button
               onClick={openCreateModal}
-              className="btn-primary flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm"
+              className="btn-primary flex items-center gap-1.5 px-3 sm:px-4 py-2 text-xs sm:text-sm"
             >
-              <Plus className="h-4 w-4" /> Create Habit
+              <Plus className="h-4 w-4" /> <span className="hidden sm:inline">Create Habit</span>
             </button>
           </div>
         </div>
@@ -604,7 +604,7 @@ function HabitTrackerDashboard() {
       {/* --- MAIN LAYOUT CONTAINER --- */}
       <main className="mx-auto max-w-5xl px-4 pt-6 sm:px-6">
         {/* --- TABS --- */}
-        <div className="mb-6 flex overflow-x-auto rounded-2xl glass p-1 gap-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="mb-6 flex overflow-x-auto rounded-xl sm:rounded-2xl glass p-1 gap-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {(
             [
               { id: "today", label: "Today", icon: LayoutDashboard },
@@ -620,14 +620,14 @@ function HabitTrackerDashboard() {
               <button
                 key={t.id}
                 onClick={() => setActiveTab(t.id)}
-                className={`flex flex-1 items-center justify-center gap-2 rounded-xl py-3 text-xs font-semibold tracking-wide transition-all ${
+                className={`flex flex-1 items-center justify-center gap-1.5 sm:gap-2 rounded-lg sm:rounded-xl py-2.5 sm:py-3 px-2 sm:px-3 text-xs font-semibold tracking-wide transition-all ${
                   active
                     ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
                     : "text-foreground/75 hover:bg-white/20 dark:hover:bg-white/5"
                 }`}
               >
-                <Icon className="h-4 w-4" />
-                {t.label}
+                <Icon className="h-4 w-4 shrink-0" />
+                <span className="hidden sm:inline">{t.label}</span>
               </button>
             );
           })}
@@ -647,12 +647,12 @@ function HabitTrackerDashboard() {
               {/* Daily Progress Widget, Welcome Card & Day Selector */}
               <div className="flex flex-col gap-6 md:col-span-1">
                 {/* Welcome Card */}
-                <div className="rounded-[2rem] glass p-6 flex flex-col justify-between relative overflow-hidden group">
+                <div className="rounded-2xl sm:rounded-[2rem] glass p-4 sm:p-6 flex flex-col justify-between relative overflow-hidden group">
                   {/* Subtle background glow */}
                   <div className="absolute top-0 right-0 h-32 w-32 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all duration-500" />
 
                   <div>
-                    <h3 className="text-xl font-black text-foreground">{greeting},</h3>
+                    <h3 className="text-lg sm:text-xl font-black text-foreground">{greeting},</h3>
                     <p className="text-xs text-foreground/80 mt-2 font-medium">
                       {habitsDueSelectedDay.length > 0 ? (
                         <>
@@ -668,9 +668,9 @@ function HabitTrackerDashboard() {
                     </p>
                   </div>
 
-                  <div className="mt-6 grid grid-cols-2 gap-4 pt-4 border-t border-border/10">
+                  <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-3 sm:gap-4 pt-3 sm:pt-4 border-t border-border/10">
                     <div>
-                      <span className="block text-2xl font-black text-emerald-600 dark:text-emerald-400">
+                      <span className="block text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400">
                         {todayCompletedCount}
                       </span>
                       <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
@@ -678,7 +678,7 @@ function HabitTrackerDashboard() {
                       </span>
                     </div>
                     <div>
-                      <span className="block text-2xl font-black text-foreground/75">
+                      <span className="block text-xl sm:text-2xl font-black text-foreground/75">
                         {Math.max(0, habitsDueSelectedDay.length - todayCompletedCount)}
                       </span>
                       <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
@@ -689,7 +689,7 @@ function HabitTrackerDashboard() {
                 </div>
 
                 {/* Today's Progress */}
-                <div className="rounded-[2rem] glass p-6">
+                <div className="rounded-2xl sm:rounded-[2rem] glass p-4 sm:p-6">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                       Today's Progress
@@ -713,7 +713,7 @@ function HabitTrackerDashboard() {
                 </div>
 
                 {/* Quick Stats */}
-                <div className="rounded-[2rem] glass p-5 flex flex-col gap-3">
+                <div className="rounded-2xl sm:rounded-[2rem] glass p-4 sm:p-5 flex flex-col gap-2.5 sm:gap-3">
                   <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1">
                     Quick Stats
                   </h3>
@@ -756,11 +756,11 @@ function HabitTrackerDashboard() {
                 </div>
 
                 {/* 7-Day Horizontal Bar */}
-                <div className="rounded-[2rem] glass p-5">
-                  <h3 className="mb-4 text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                <div className="rounded-2xl sm:rounded-[2rem] glass p-4 sm:p-5">
+                  <h3 className="mb-3 sm:mb-4 text-xs font-bold uppercase tracking-wider text-muted-foreground">
                     Select Tracking Date
                   </h3>
-                  <div className="flex justify-between gap-1.5">
+                  <div className="flex justify-between gap-1 sm:gap-1.5">
                     {weekDays.map((d) => {
                       const isToday = isSameDay(d, new Date());
                       const isSelected = isSameDay(d, selectedDay);
@@ -779,7 +779,7 @@ function HabitTrackerDashboard() {
                         <button
                           key={dStr}
                           onClick={() => setSelectedDay(d)}
-                          className={`flex flex-1 flex-col items-center rounded-2xl py-3 transition-all relative ${
+                          className={`flex flex-1 flex-col items-center rounded-xl sm:rounded-2xl py-2 sm:py-3 transition-all relative ${
                             isSelected
                               ? "bg-primary text-primary-foreground shadow shadow-primary/30 scale-105"
                               : "glass text-foreground hover:scale-102"
@@ -788,7 +788,7 @@ function HabitTrackerDashboard() {
                           <span className="text-[10px] font-medium uppercase opacity-75">
                             {format(d, "eee").substring(0, 1)}
                           </span>
-                          <span className="mt-1 text-base font-black">{format(d, "d")}</span>
+                          <span className="mt-0.5 sm:mt-1 text-sm sm:text-base font-black">{format(d, "d")}</span>
                           {dueOnDay.length > 0 ? (
                             <span
                               className={`absolute bottom-1.5 h-1.5 w-1.5 rounded-full ${
@@ -822,10 +822,10 @@ function HabitTrackerDashboard() {
 
               {/* Today Checklist */}
               <div className="md:col-span-2 flex flex-col gap-4">
-                <div className="rounded-[2rem] glass p-6">
-                  <div className="mb-6 flex items-center justify-between">
+                <div className="rounded-2xl sm:rounded-[2rem] glass p-4 sm:p-6">
+                  <div className="mb-4 sm:mb-6 flex items-center justify-between">
                     <div>
-                      <h2 className="text-2xl font-black text-foreground">
+                      <h2 className="text-xl sm:text-2xl font-black text-foreground">
                         {isSameDay(selectedDay, new Date())
                           ? "Today's Checklist"
                           : format(selectedDay, "MMMM d, yyyy")}
@@ -865,27 +865,27 @@ function HabitTrackerDashboard() {
                         return (
                           <div
                             key={h.id}
-                            className={`flex items-center justify-between rounded-2xl p-4 transition-all duration-300 border ${
+                            className={`flex items-center justify-between rounded-xl sm:rounded-2xl p-3 sm:p-4 transition-all duration-300 border ${
                               isDone
                                 ? "glass border-emerald-500/10 opacity-75"
                                 : "glass hover:border-foreground/10"
                             }`}
                           >
-                            <div className="flex items-center gap-3.5 min-w-0">
+                            <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
                               {/* Habit Check Action */}
                               <button
                                 onClick={() => toggleHabit(h.id, selectedDayStr)}
-                                className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl transition-all duration-300 border-2 ${
+                                className={`grid h-9 w-9 sm:h-10 sm:w-10 shrink-0 place-items-center rounded-lg sm:rounded-xl transition-all duration-300 border-2 ${
                                   isDone
                                     ? "bg-emerald-500 border-emerald-500 text-white shadow shadow-emerald-500/30 scale-102"
                                     : "border-border/30 hover:border-primary/50 hover:bg-white/5"
                                 }`}
                               >
-                                {isDone && <Check className="h-5 w-5 stroke-[3px]" />}
+                                {isDone && <Check className="h-4.5 w-4.5 sm:h-5 sm:w-5 stroke-[3px]" />}
                               </button>
                               <div className="min-w-0">
                                 <span
-                                  className={`block text-base font-bold truncate ${
+                                  className={`block text-sm sm:text-base font-bold truncate ${
                                     isDone
                                       ? "text-muted-foreground line-through decoration-emerald-500/50"
                                       : "text-foreground"
@@ -893,9 +893,9 @@ function HabitTrackerDashboard() {
                                 >
                                   {h.name}
                                 </span>
-                                <div className="mt-0.5 flex items-center gap-2 text-xs text-muted-foreground">
+                                <div className="mt-0.5 flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs text-muted-foreground">
                                   <span
-                                    className="inline-block h-2.5 w-2.5 rounded-full"
+                                    className="inline-block h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full"
                                     style={{ backgroundColor: h.color }}
                                   />
                                   <span>
@@ -908,15 +908,15 @@ function HabitTrackerDashboard() {
                             </div>
 
                             {/* Flame Streak Indicator */}
-                            <div className="flex items-center gap-1.5">
+                            <div className="flex items-center gap-1 sm:gap-1.5">
                               {h.currentStreak > 0 ? (
-                                <span className="flex items-center gap-1 rounded-full bg-orange-500/10 px-3 py-1.5 text-xs font-bold text-orange-500">
-                                  <Flame className="h-3.5 w-3.5 fill-orange-500" />
+                                <span className="flex items-center gap-0.5 sm:gap-1 rounded-full bg-orange-500/10 px-2 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs font-bold text-orange-500">
+                                  <Flame className="h-3 w-3 sm:h-3.5 sm:w-3.5 fill-orange-500" />
                                   {h.currentStreak}
                                 </span>
                               ) : (
-                                <span className="flex items-center gap-1 rounded-full bg-border/5 px-3 py-1.5 text-xs font-bold text-muted-foreground/60">
-                                  <Flame className="h-3.5 w-3.5 opacity-40" />0
+                                <span className="flex items-center gap-0.5 sm:gap-1 rounded-full bg-border/5 px-2 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs font-bold text-muted-foreground/60">
+                                  <Flame className="h-3 w-3 sm:h-3.5 sm:w-3.5 opacity-40" />0
                                 </span>
                               )}
                             </div>
@@ -937,11 +937,11 @@ function HabitTrackerDashboard() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.25 }}
-              className="rounded-[2.5rem] glass p-6"
+              className="rounded-2xl sm:rounded-[2.5rem] glass p-4 sm:p-6"
             >
-              <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+              <div className="mb-4 sm:mb-6 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
                 <div>
-                  <h2 className="text-2xl font-black text-foreground">Habits List</h2>
+                  <h2 className="text-xl sm:text-2xl font-black text-foreground">Habits List</h2>
                   <p className="text-xs text-muted-foreground font-medium">
                     Configure schedules, monitor streak milestones, or perform updates.
                   </p>
@@ -968,13 +968,13 @@ function HabitTrackerDashboard() {
                   {habitsWithStats.map((h) => (
                     <div
                       key={h.id}
-                      className="group flex flex-col justify-between rounded-2xl glass p-5 border border-transparent hover:border-foreground/10 transition-all duration-300"
+                      className="group flex flex-col justify-between rounded-xl sm:rounded-2xl glass p-4 sm:p-5 border border-transparent hover:border-foreground/10 transition-all duration-300"
                     >
                       <div>
                         <div className="flex items-start justify-between">
-                          <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-2.5 sm:gap-3">
                             <span
-                              className="grid h-10 w-10 place-items-center rounded-xl shadow-md text-white"
+                              className="grid h-9 w-9 sm:h-10 sm:w-10 shrink-0 place-items-center rounded-lg sm:rounded-xl shadow-md text-white"
                               style={{
                                 backgroundColor: h.color,
                                 boxShadow: `0 4px 12px ${h.color}30`,
@@ -983,8 +983,8 @@ function HabitTrackerDashboard() {
                               <HabitIcon name={h.icon} />
                             </span>
                             <div>
-                              <h3 className="text-base font-bold text-foreground">{h.name}</h3>
-                              <span className="text-[10px] font-bold text-muted-foreground/80 uppercase tracking-wider">
+                              <h3 className="text-sm sm:text-base font-bold text-foreground">{h.name}</h3>
+                              <span className="text-[9px] sm:text-[10px] font-bold text-muted-foreground/80 uppercase tracking-wider">
                                 {h.schedule.length === 7
                                   ? "Everyday"
                                   : h.schedule.map((dayIdx) => WEEKDAY_NAMES[dayIdx]).join(", ")}
@@ -993,52 +993,52 @@ function HabitTrackerDashboard() {
                           </div>
 
                           {/* Quick action buttons */}
-                          <div className="flex gap-1.5 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity">
+                          <div className="flex gap-1 sm:gap-1.5 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity">
                             <button
                               onClick={() => openEditModal(h)}
-                              className="glass hover:bg-white/35 grid h-8 w-8 place-items-center rounded-full text-foreground/80 hover:text-foreground transition"
+                              className="glass hover:bg-white/35 grid h-7.5 w-7.5 sm:h-8 sm:w-8 place-items-center rounded-full text-foreground/80 hover:text-foreground transition"
                               aria-label="Edit habit"
                             >
-                              <Edit2 className="h-3.5 w-3.5" />
+                              <Edit2 className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                             </button>
                             <button
                               onClick={() => deleteHabit(h.id)}
-                              className="glass hover:bg-red-500/10 grid h-8 w-8 place-items-center rounded-full text-foreground/80 hover:text-red-500 transition"
+                              className="glass hover:bg-red-500/10 grid h-7.5 w-7.5 sm:h-8 sm:w-8 place-items-center rounded-full text-foreground/80 hover:text-red-500 transition"
                               aria-label="Delete habit"
                             >
-                              <Trash2 className="h-3.5 w-3.5" />
+                              <Trash2 className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                             </button>
                           </div>
                         </div>
 
                         {/* Streak stats grid */}
-                        <div className="mt-5 grid grid-cols-3 gap-2">
-                          <div className="rounded-xl bg-white/20 dark:bg-white/5 p-2.5 text-center flex flex-col justify-between">
-                            <Flame className="mx-auto h-4 w-4 fill-orange-500 text-orange-500" />
-                            <span className="block mt-1 text-sm font-black text-foreground">
+                        <div className="mt-4 sm:mt-5 grid grid-cols-3 gap-1.5 sm:gap-2">
+                          <div className="rounded-lg sm:rounded-xl bg-white/20 dark:bg-white/5 p-1.5 sm:p-2.5 text-center flex flex-col justify-between min-w-0">
+                            <Flame className="mx-auto h-3.5 w-3.5 sm:h-4 sm:w-4 fill-orange-500 text-orange-500" />
+                            <span className="block mt-1 text-xs sm:text-sm font-black text-foreground truncate">
                               {h.currentStreak} {h.currentStreak === 1 ? "Day" : "Days"}
                             </span>
-                            <span className="text-[9px] uppercase font-bold text-muted-foreground mt-0.5">
+                            <span className="text-[8px] sm:text-[9px] uppercase font-bold text-muted-foreground mt-0.5">
                               Current
                             </span>
                           </div>
 
-                          <div className="rounded-xl bg-white/20 dark:bg-white/5 p-2.5 text-center flex flex-col justify-between">
-                            <Trophy className="mx-auto h-4 w-4 text-primary" />
-                            <span className="block mt-1 text-sm font-black text-foreground">
+                          <div className="rounded-lg sm:rounded-xl bg-white/20 dark:bg-white/5 p-1.5 sm:p-2.5 text-center flex flex-col justify-between min-w-0">
+                            <Trophy className="mx-auto h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary" />
+                            <span className="block mt-1 text-xs sm:text-sm font-black text-foreground truncate">
                               {h.longestStreak} {h.longestStreak === 1 ? "Day" : "Days"}
                             </span>
-                            <span className="text-[9px] uppercase font-bold text-muted-foreground mt-0.5">
+                            <span className="text-[8px] sm:text-[9px] uppercase font-bold text-muted-foreground mt-0.5">
                               Longest
                             </span>
                           </div>
 
-                          <div className="rounded-xl bg-white/20 dark:bg-white/5 p-2.5 text-center flex flex-col justify-between">
-                            <div className="text-xs text-accent">📅</div>
-                            <span className="block mt-0.5 text-[10px] font-black text-foreground leading-tight truncate">
+                          <div className="rounded-lg sm:rounded-xl bg-white/20 dark:bg-white/5 p-1.5 sm:p-2.5 text-center flex flex-col justify-between min-w-0">
+                            <div className="text-[11px] sm:text-xs text-accent">📅</div>
+                            <span className="block mt-0.5 text-[9px] sm:text-[10px] font-black text-foreground leading-tight truncate">
                               {getLastCompletedText(h, format(new Date(), "yyyy-MM-dd"))}
                             </span>
-                            <span className="text-[9px] uppercase font-bold text-muted-foreground mt-0.5">
+                            <span className="text-[8px] sm:text-[9px] uppercase font-bold text-muted-foreground mt-0.5">
                               Last Done
                             </span>
                           </div>
@@ -1061,7 +1061,7 @@ function HabitTrackerDashboard() {
               className="grid grid-cols-1 gap-6 md:grid-cols-4"
             >
               {/* Heatmap day details sidebar */}
-              <div className="md:col-span-1 rounded-[2.5rem] glass p-5 flex flex-col gap-4">
+              <div className="md:col-span-1 rounded-2xl sm:rounded-[2.5rem] glass p-4 sm:p-5 flex flex-col gap-3 sm:gap-4">
                 <div>
                   <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                     Day Details
@@ -1094,14 +1094,14 @@ function HabitTrackerDashboard() {
                         <button
                           key={h.id}
                           onClick={() => toggleHabit(h.id, dayStr)}
-                          className={`flex items-center gap-2.5 rounded-xl p-3 text-left transition-all border ${
+                          className={`flex items-center gap-2 sm:gap-2.5 rounded-lg sm:rounded-xl p-2 sm:p-3 text-left transition-all border ${
                             isDone
                               ? "bg-emerald-500/10 border-emerald-500/30 text-foreground"
                               : "glass border-transparent hover:border-foreground/10 text-foreground"
                           }`}
                         >
                           <span
-                            className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-white text-xs ${
+                            className={`flex h-5.5 w-5.5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-md sm:rounded-lg text-white text-[10px] sm:text-xs ${
                               isDone ? "bg-emerald-500 shadow-sm" : ""
                             }`}
                             style={{ backgroundColor: isDone ? undefined : h.color }}
@@ -1125,7 +1125,7 @@ function HabitTrackerDashboard() {
               </div>
 
               {/* GitHub contribution style calendar heatmap */}
-              <div className="md:col-span-3 rounded-[2.5rem] glass p-6">
+              <div className="md:col-span-3 rounded-2xl sm:rounded-[2.5rem] glass p-4 sm:p-6">
                 <div>
                   <div className="mb-6">
                     <h2 className="text-xl font-black text-foreground">Consistency Grid</h2>
@@ -1135,16 +1135,16 @@ function HabitTrackerDashboard() {
                     </p>
                   </div>
 
-                  <div className="flex gap-2 items-start overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                  <div className="flex gap-1.5 sm:gap-2 items-start overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                     {/* Weekday labels */}
-                    <div className="grid grid-rows-7 gap-1.5 text-[9px] font-bold text-muted-foreground uppercase pt-6">
-                      <div className="h-7 flex items-center">Sun</div>
-                      <div className="h-7 flex items-center">Mon</div>
-                      <div className="h-7 flex items-center">Tue</div>
-                      <div className="h-7 flex items-center">Wed</div>
-                      <div className="h-7 flex items-center">Thu</div>
-                      <div className="h-7 flex items-center">Fri</div>
-                      <div className="h-7 flex items-center">Sat</div>
+                    <div className="grid grid-rows-7 gap-1 sm:gap-1.5 text-[8px] sm:text-[9px] font-bold text-muted-foreground uppercase pt-5 sm:pt-6">
+                      <div className="h-6 sm:h-7 flex items-center">Sun</div>
+                      <div className="h-6 sm:h-7 flex items-center">Mon</div>
+                      <div className="h-6 sm:h-7 flex items-center">Tue</div>
+                      <div className="h-6 sm:h-7 flex items-center">Wed</div>
+                      <div className="h-6 sm:h-7 flex items-center">Thu</div>
+                      <div className="h-6 sm:h-7 flex items-center">Fri</div>
+                      <div className="h-6 sm:h-7 flex items-center">Sat</div>
                     </div>
 
                     {/* Grid container */}
@@ -1168,7 +1168,7 @@ function HabitTrackerDashboard() {
                       </div>
 
                       {/* Heatmap 7x12 Grid */}
-                      <div className="grid grid-flow-col grid-rows-7 gap-1.5">
+                      <div className="grid grid-flow-col grid-rows-7 gap-1 sm:gap-1.5">
                         {heatmapWeeks.map((week) =>
                           week.map((day) => {
                             const dayStr = format(day, "yyyy-MM-dd");
@@ -1245,7 +1245,7 @@ function HabitTrackerDashboard() {
                                 key={dayStr}
                                 onClick={() => !isFuture && setSelectedCalendarDay(day)}
                                 disabled={isFuture}
-                                className={`h-7 w-7 flex items-center justify-center text-[10px] font-black ${cellClass}`}
+                                className={`h-6 w-6 sm:h-7 sm:w-7 flex items-center justify-center text-[9px] sm:text-[10px] font-black ${cellClass}`}
                                 style={cellStyle}
                                 title={`${format(day, "EEEE, MMMM d, yyyy")}: ${totalCompleted}/${totalDue} completed`}
                               >
@@ -1300,7 +1300,7 @@ function HabitTrackerDashboard() {
               className="grid grid-cols-1 gap-6 md:grid-cols-2"
             >
               {/* Analytics: 14 Day Completion Rate */}
-              <div className="rounded-[2.5rem] glass p-6">
+              <div className="rounded-2xl sm:rounded-[2.5rem] glass p-4 sm:p-6">
                 <div className="mb-4">
                   <h3 className="text-base font-bold text-foreground">Completion History</h3>
                   <p className="text-xs text-muted-foreground">
@@ -1348,7 +1348,7 @@ function HabitTrackerDashboard() {
               </div>
 
               {/* Analytics: Completions by Habit */}
-              <div className="rounded-[2.5rem] glass p-6">
+              <div className="rounded-2xl sm:rounded-[2.5rem] glass p-4 sm:p-6">
                 <div className="mb-4">
                   <h3 className="text-base font-bold text-foreground">Completions by Habit</h3>
                   <p className="text-xs text-muted-foreground">
@@ -1395,7 +1395,7 @@ function HabitTrackerDashboard() {
               className="max-w-2xl mx-auto flex flex-col gap-6"
             >
               {/* Header */}
-              <div className="rounded-[2rem] glass p-6">
+              <div className="rounded-2xl sm:rounded-[2rem] glass p-4 sm:p-6">
                 <h2 className="text-2xl font-black text-foreground">Settings</h2>
                 <p className="text-xs text-muted-foreground font-medium">
                   Manage database backups, restore previous history, or modify settings.
@@ -1403,7 +1403,7 @@ function HabitTrackerDashboard() {
               </div>
 
               {/* Theme Selector */}
-              <div className="rounded-[2.5rem] glass p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="rounded-2xl sm:rounded-[2.5rem] glass p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
                 <div>
                   <h3 className="text-base font-bold text-foreground flex items-center gap-2">
                     Theme Mode
@@ -1419,7 +1419,7 @@ function HabitTrackerDashboard() {
               </div>
 
               {/* Data Actions */}
-              <div className="rounded-[2.5rem] glass p-6 flex flex-col gap-6">
+              <div className="rounded-2xl sm:rounded-[2.5rem] glass p-4 sm:p-6 flex flex-col gap-4 sm:gap-6">
                 <div>
                   <h3 className="text-base font-bold text-foreground">Data Management</h3>
                   <p className="text-xs text-muted-foreground">
@@ -1427,11 +1427,11 @@ function HabitTrackerDashboard() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   {/* Export */}
                   <button
                     onClick={exportBackup}
-                    className="flex flex-col items-center justify-center p-6 rounded-2xl glass hover:bg-white/20 dark:hover:bg-white/5 border border-transparent hover:border-foreground/10 text-center transition-all group"
+                    className="flex flex-col items-center justify-center p-4 sm:p-6 rounded-xl sm:rounded-2xl glass hover:bg-white/20 dark:hover:bg-white/5 border border-transparent hover:border-foreground/10 text-center transition-all group"
                   >
                     <Download className="h-6 w-6 text-primary group-hover:scale-110 transition-transform mb-3" />
                     <span className="text-sm font-bold text-foreground">Export Backup</span>
@@ -1441,7 +1441,7 @@ function HabitTrackerDashboard() {
                   </button>
 
                   {/* Import */}
-                  <label className="flex flex-col items-center justify-center p-6 rounded-2xl glass hover:bg-white/20 dark:hover:bg-white/5 border border-transparent hover:border-foreground/10 text-center transition-all cursor-pointer group">
+                  <label className="flex flex-col items-center justify-center p-4 sm:p-6 rounded-xl sm:rounded-2xl glass hover:bg-white/20 dark:hover:bg-white/5 border border-transparent hover:border-foreground/10 text-center transition-all cursor-pointer group">
                     <Upload className="h-6 w-6 text-accent group-hover:scale-110 transition-transform mb-3" />
                     <span className="text-sm font-bold text-foreground">Import Backup</span>
                     <span className="text-[10px] text-muted-foreground mt-1 max-w-[200px]">
@@ -1454,7 +1454,7 @@ function HabitTrackerDashboard() {
                 <hr className="border-border/10" />
 
                 {/* Reset Section */}
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-red-500/5 dark:bg-red-500/10 p-5 rounded-2xl border border-red-500/10">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 bg-red-500/5 dark:bg-red-500/10 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-red-500/10">
                   <div>
                     <h4 className="text-sm font-bold text-red-600 dark:text-red-400">
                       Reset Application Database
@@ -1494,7 +1494,7 @@ function HabitTrackerDashboard() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-md rounded-[2.5rem] glass-strong border border-border/20 p-6 shadow-2xl z-10"
+              className="relative w-full max-w-md rounded-2xl sm:rounded-[2.5rem] glass-strong border border-border/20 p-4 sm:p-6 shadow-2xl z-10"
             >
               <div className="mb-5 flex items-center justify-between">
                 <h3 className="text-xl font-black text-foreground">
@@ -1534,7 +1534,7 @@ function HabitTrackerDashboard() {
                   <label className="block text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
                     Schedule Weekdays
                   </label>
-                  <div className="flex gap-1.5 justify-between">
+                  <div className="flex gap-1 sm:gap-1.5 justify-between">
                     {WEEKDAY_NAMES.map((w, idx) => {
                       const active = formSchedule.includes(idx);
                       return (
@@ -1542,7 +1542,7 @@ function HabitTrackerDashboard() {
                           key={w}
                           type="button"
                           onClick={() => toggleDayInSchedule(idx)}
-                          className={`flex-1 rounded-xl py-2 text-center text-xs font-bold tracking-tight border transition-all ${
+                          className={`flex-1 rounded-lg sm:rounded-xl py-1.5 sm:py-2 text-center text-xs font-bold tracking-tight border transition-all ${
                             active
                               ? "bg-primary border-primary text-primary-foreground shadow shadow-primary/20 scale-102"
                               : "glass border-border/20 text-foreground hover:bg-white/10"
@@ -1591,7 +1591,7 @@ function HabitTrackerDashboard() {
                   <label className="block text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
                     Display Icon
                   </label>
-                  <div className="grid grid-cols-4 gap-2">
+                  <div className="grid grid-cols-4 gap-1.5 sm:gap-2">
                     {ICON_OPTIONS.map((i) => {
                       const isSelected = formIcon === i.name;
                       return (
@@ -1599,7 +1599,7 @@ function HabitTrackerDashboard() {
                           key={i.name}
                           type="button"
                           onClick={() => setFormIcon(i.name)}
-                          className={`flex flex-col items-center justify-center rounded-xl p-2 border transition-all ${
+                          className={`flex flex-col items-center justify-center rounded-lg sm:rounded-xl p-1.5 sm:p-2 border transition-all ${
                             isSelected
                               ? "bg-primary border-primary text-primary-foreground scale-102 shadow shadow-primary/25"
                               : "glass border-border/25 hover:border-foreground/15 text-foreground"
