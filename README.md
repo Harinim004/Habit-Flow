@@ -136,7 +136,6 @@ Implement browser notifications, email reminders, or mobile push notifications t
 
 #### Achievement & Gamification System
 Introduce badges, milestones, achievement levels, and rewards to improve user engagement and motivation.
-
 #### Progressive Web App (PWA)
 Convert HabitFlow into a PWA to provide an app-like experience with offline support and installability on desktop and mobile devices.
 ---
