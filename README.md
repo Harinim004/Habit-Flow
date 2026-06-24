@@ -73,34 +73,36 @@ export interface Habit {
 
 ---
 
+
 ## 🧠 Hardest Problem & Solution
 
-### The Challenge
-On the landing page showcase section, we needed to overlay interactive hotspot triggers and SVG connection arrows on top of a static screenshot of the `/app` page. The layout had to meet the following requirements:
-1. The arrows had to point precisely to the correct widgets in the screenshot (Checklist, Date selector, Progress bar, and Stats).
-2. Hovering/clicking cards on the side had to light up the corresponding hotspot and overlay on the screenshot.
-3. The layout, SVG paths, and hotspots had to align perfectly on screens of all sizes, maintaining responsiveness despite screen stretching.
+One of the biggest challenges I faced during this project was not a single feature, but rather learning and applying Next.js effectively while building a complete application from scratch.
 
-### The Solution
-We implemented a responsive viewBox system for the SVG overlay:
-- Rendered the SVG using `viewBox="0 0 1000 600"` and `preserveAspectRatio="none"`.
-- Centered the mockup container (`col-span-6`) and limited its width using `max-w-md` (448px) inside the 1000px viewBox coordinate space.
-- Calculated the exact coordinate positions of the widgets inside the screenshot by analyzing pixel boundaries.
-- Set relative percentage bounds (e.g. `top: "37.5%", left: "13.5%", width: "25.5%", height: "14%"`) for the overlays in [dashboard-mockup.tsx](file:///d:/Habit%20Flow/home/habitflow-journey-main/src/components/landing/dashboard-mockup.tsx), placing hotspots on the corresponding coordinate centers.
-- Mapped the SVG lines using bezier paths (e.g. `d="M 750,150 Q 570,180 392,267"`) starting at fixed cards positions on the outer boundaries and ending at calculated inner mockup centers.
+As someone relatively new to Next.js and modern frontend development, I had to learn several concepts simultaneously, including project structure, routing, component organization, state management, localStorage persistence, responsive design, and UI composition. Initially, understanding how different parts of the application should communicate with each other while keeping the code maintainable was challenging.
 
----
+Another challenge was designing a habit-tracking system that could support different schedules while remaining flexible enough for future enhancements. I needed a data structure that could store habit information, schedules, completion history, and streak-related data in a way that was easy to manage and persist locally.
+
+To solve these challenges, I approached development incrementally. Rather than building everything at once, I first focused on creating a working foundation and then gradually added features and refinements. I spent time studying documentation, experimenting with smaller components, and continuously refactoring the code as my understanding improved.
+
+Throughout the project, I learned how to break complex features into reusable components, manage application state more effectively, and create a cleaner project structure. I also gained practical experience in building responsive user interfaces and persisting data using localStorage.
+
+This project became both a development challenge and a learning experience, significantly improving my understanding of Next.js, modern frontend workflows, and real-world application development.
+
+
 
 ## 🤖 AI Integration & Collaboration Notes
 
-We paired with the AI coding agent to refine the landing page layouts and clean the repository structure.
+AI was used extensively throughout the development process as both a learning resource and a development assistant.
 
-### What We Changed / Fixed in AI Output:
-- **Hotspot Correction**: The AI initially placed a "Streak Multiplier" overlay pointing to the top-right header navbar of the dashboard screenshot. However, there was no streak badge in the actual header of the `/app` view. We rejected this mapping and redirected the overlay/arrow to the **Today's Progress** circular widget at the top-left of the screenshot.
-- **Responsive Adaptations**: The AI's initial layout used absolute viewport units that broke on narrow screen aspect ratios. We refined this to relative parent percentages and centered flexbox containers.
-- **De-branding**: We cleaned up and rejected generic boilerplate text ("Lovable App", default descriptors) and removed the AI-specific sync packages (`.lovable/project.json`, `AGENTS.md`) and error catcher logs (`lovable-error-reporting.ts`) to deliver a fully independent repository.
+Since I am still building my expertise with Next.js and modern frontend technologies, AI helped me understand unfamiliar concepts, explore implementation approaches, and accelerate development. It was particularly useful for generating initial code structures, explaining framework-specific concepts, suggesting UI ideas, debugging issues, and providing alternative solutions when I encountered roadblocks.
 
----
+However, the project was not created through direct copy-and-paste development. The overall product vision, feature selection, application flow, layout planning, visual direction, and user experience decisions were driven by my own ideas and understanding of the project requirements.
+
+AI-generated outputs frequently required modifications before they could be integrated into the project. I reviewed the generated code, adjusted logic, simplified overly complex implementations, fixed bugs, improved responsiveness, and adapted components to match the design and behavior I wanted to achieve. In many cases, AI provided a starting point, while the final implementation involved significant customization and refinement.
+
+I also used AI as a learning tool to better understand concepts that were new to me. Rather than treating AI as a replacement for development, I used it as a collaborative assistant that helped me learn, experiment, and improve my implementation decisions.
+
+Overall, AI played an important supporting role in the project, while the planning, decision-making, customization, testing, and final integration remained my responsibility.
 
 ## ⏳ Known Limitations & Future Roadmap
 
