@@ -1,4 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+"use client";
+
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
   motion,
@@ -30,26 +32,7 @@ import { ThemeToggle } from "@/components/landing/theme-toggle";
 import { Particles } from "@/components/landing/particles";
 import { DashboardMockup } from "@/components/landing/dashboard-mockup";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "HabitFlow — Build better habits. Live a better life." },
-      {
-        name: "description",
-        content:
-          "The beautiful habit tracking platform that helps you stay consistent, build routines, and achieve your goals effortlessly.",
-      },
-      { property: "og:title", content: "HabitFlow — Build better habits." },
-      {
-        property: "og:description",
-        content: "Track habits, build streaks, and transform your routine with HabitFlow.",
-      },
-    ],
-  }),
-  component: Index,
-});
-
-function Index() {
+export default function Index() {
   return (
     <main className="relative overflow-x-hidden">
       <Navbar />
@@ -117,12 +100,12 @@ function Navbar() {
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <Link
-            to="/app"
+            href="/app"
             className="hidden text-sm font-medium text-foreground/80 hover:text-foreground sm:inline-block"
           >
             Login
           </Link>
-          <Link to="/app" className="btn-primary hidden text-sm sm:inline-flex">
+          <Link href="/app" className="btn-primary hidden text-sm sm:inline-flex">
             Start Free <ArrowRight className="h-4 w-4" />
           </Link>
           <button
@@ -156,7 +139,7 @@ function Navbar() {
                 </li>
               ))}
               <li>
-                <Link to="/app" className="btn-primary mt-2 w-full text-sm">
+                <Link href="/app" className="btn-primary mt-2 w-full text-sm">
                   Start Tracking Free
                 </Link>
               </li>
@@ -180,7 +163,7 @@ function Hero() {
     <section ref={ref} id="home" className="relative min-h-[100dvh] overflow-hidden pt-24 sm:pt-32">
       {/* Day background */}
       <motion.div style={{ y: bgY }} className="absolute inset-0 -z-10 dark:opacity-0" aria-hidden>
-        <img src={heroDay} alt="" className="h-full w-full object-cover" />
+        <img src={heroDay.src} alt="" className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-background" />
       </motion.div>
       {/* Night background */}
@@ -189,7 +172,7 @@ function Hero() {
         className="absolute inset-0 -z-10 opacity-0 dark:opacity-100"
         aria-hidden
       >
-        <img src={heroNight} alt="" className="h-full w-full object-cover" />
+        <img src={heroNight.src} alt="" className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
       </motion.div>
 
@@ -238,7 +221,7 @@ function Hero() {
           transition={{ duration: 0.3 }}
           className="mt-8 flex flex-wrap items-center justify-center gap-3"
         >
-          <Link to="/app" className="btn-primary">
+          <Link href="/app" className="btn-primary">
             Start Tracking Free <ArrowRight className="h-4 w-4" />
           </Link>
           <a href="#how" className="btn-glass">
@@ -1197,7 +1180,7 @@ function FinalCTA() {
         className="relative mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] p-10 sm:p-16"
       >
         <img
-          src={ctaSunset}
+          src={ctaSunset.src}
           alt=""
           loading="lazy"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
@@ -1217,7 +1200,7 @@ function FinalCTA() {
           <div className="mt-10 flex justify-center" onMouseMove={onMove} onMouseLeave={reset}>
             <Link
               ref={btnRef}
-              to="/app"
+              href="/app"
               className="btn-primary px-8 py-4 text-base sm:text-lg"
               style={{
                 transform: `translate(${pos.x}px, ${pos.y}px)`,

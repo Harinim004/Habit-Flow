@@ -23,5 +23,6 @@
 # typescript
 *.tsbuildinfo
 
-# tanstack router
-/.tanstack
+# Next.js
+/.next/
+

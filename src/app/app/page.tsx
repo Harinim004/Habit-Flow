@@ -1,4 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+"use client";
+
+import Link from "next/link";
 import { useEffect, useState, useMemo } from "react";
 import {
   Plus,
@@ -50,20 +52,6 @@ import {
 } from "recharts";
 import { ThemeToggle } from "@/components/landing/theme-toggle";
 import { Habit, calculateStreaks, generateSeedHabits, getLastCompletedText } from "@/lib/streaks";
-
-export const Route = createFileRoute("/app")({
-  head: () => ({
-    title: "Dashboard — HabitFlow",
-    meta: [
-      { title: "Dashboard — HabitFlow" },
-      {
-        name: "description",
-        content: "Track your habits, build streaks, and monitor progress beautifully.",
-      },
-    ],
-  }),
-  component: HabitTrackerDashboard,
-});
 
 const COLOR_OPTIONS = [
   { name: "Olive", hex: "#556B2F" },
@@ -157,7 +145,7 @@ function SVGFlower({ x, y, color = "var(--primary)", scale = 1, delay = 0 }: SVG
   );
 }
 
-function HabitTrackerDashboard() {
+export default function HabitTrackerDashboard() {
   const [habits, setHabits] = useState<Habit[]>([]);
   const [activeTab, setActiveTab] = useState<
     "today" | "overview" | "calendar" | "analytics" | "settings"
@@ -575,7 +563,7 @@ function HabitTrackerDashboard() {
         <div className="mx-auto flex max-w-6xl items-center justify-between">
           <div className="flex items-center gap-3">
             <Link
-              to="/"
+              href="/"
               className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/20 hover:bg-white/40 text-foreground transition"
               aria-label="Back to home"
             >

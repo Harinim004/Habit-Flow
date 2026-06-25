@@ -27,7 +27,7 @@ export function DashboardMockup({
       {/* 2. Main Content Area displaying the screenshot */}
       <div className="relative overflow-hidden rounded-xl border border-border/5 bg-background/20 select-none">
         <img
-          src={dashboardScreenshot}
+          src={dashboardScreenshot.src}
           alt="HabitFlow App Dashboard Screenshot"
           className="w-full h-auto object-cover"
         />
